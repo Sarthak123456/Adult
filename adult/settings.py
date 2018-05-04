@@ -26,7 +26,7 @@ with sqlite3.connect(db_path) as db:
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = [u'604838072ae34fc8a132c985d4768253.vfs.cloud9.us-east-2.amazonaws.com']
 
 
     # Application definition
@@ -43,7 +43,7 @@ with sqlite3.connect(db_path) as db:
     ]
 
     TEMPLATE_DIRS = (
-        "adult/mypp/Templates/",
+        "../Adult/myapp/Templates/",
     )
 
 
@@ -62,7 +62,7 @@ with sqlite3.connect(db_path) as db:
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [],
+            'DIRS': [os.path.join(BASE_DIR,'..', 'Adult/myapp/Templates/')],
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [

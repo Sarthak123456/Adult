@@ -18,29 +18,29 @@ def view(request):
 	white = Adult.objects.select_related().filter(race =' White').count()
 	black = Adult.objects.select_related().filter(race =' Black').count()
 	asian = Adult.objects.select_related().filter(race =' Asian-Pac-Islander').count()
-	nri = Adult.objects.select_related().filter(race =' Amer-Indian-Eskimo').count()
+	nri = Adult.objects.select_related().filter(race ='Amer-Indian-Eskimo').count()
 	other = Adult.objects.select_related().filter(race =' Other').count()
 	
 	if (request.GET.get('sex') and request.GET.get('race')):
 			
 			sex_filter= request.GET.get('sex')
 			race_filter=request.GET.get('race')
-           		filter=Adult.objects.filter(Q(sex= sex_filter) & Q(race = race_filter))[:200]
+           		filter=Adult.objects.filter(Q(sex= sex_filter) & Q(race = race_filter))[:20]
            		
     	elif request.GET.get('sex'):
 	    	sex_filter= request.GET.get('sex')
-	   	filter=Adult.objects.select_related().filter(sex=sex_filter)[:200]       	
+	   	filter=Adult.objects.select_related().filter(sex=sex_filter)[:20]       	
            		
 	elif request.GET.get('race'):
 	    	race_filter= request.GET.get('race')
-	   	filter=Adult.objects.filter(race=race_filter)[:200]
+	   	filter=Adult.objects.filter(race=race_filter)[:20]
 	   		
 	elif request.GET.get('relationship'):
 	    	relationship_filter= request.GET.get('relationship')
-	   	filter=Adult.objects.select_related().filter(relationship=relationship_filter)[:200]
+	   	filter=Adult.objects.select_related().filter(relationship=relationship_filter)[:20]
 	   	
 	else:
-			filter=Adult.objects.select_related().all()[:10000]
+			filter=Adult.objects.select_related().all()[:20]
 
 
 	context={'sex_filter': filter,'sex': sex ,'race': race, 'relationship' : relationship, 'male': males, 'female' : females, 
