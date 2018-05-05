@@ -40,7 +40,7 @@ def view(request):
 	   	filter=Adult.objects.select_related().filter(relationship=relationship_filter)[:200]
 	   	
 	else:
-			filter=Adult.objects.select_related().all()[:10000]
+			filter=Adult.objects.select_related().all()[:100]
 
 
 	context={'sex_filter': filter,'sex': sex ,'race': race, 'relationship' : relationship, 'male': males, 'female' : females, 

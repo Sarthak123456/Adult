@@ -3,7 +3,7 @@
 
 {% block main_content %}
 
-<div class=' col-md-12 inline'>
+<div class='row'>
     <div class='col-md-6'>
  <div id="donutchart" style="width: 700px; height: 300px;"></div>
  </div>
@@ -11,24 +11,36 @@
      <div id="piechart" style="width: 700px; height: 300px;"></div>
      </div>
   
-  
-<select name='sex' id='sex' >
-    <option>Sex</option>
-	
-	{% for j in sex %}
-  <option value="{{j.sex}}" >{{j.sex}}</option>
-  {% endfor %}
+  </div>
 
-</select>
+  <div class="row">
 
-<select name="race" id='race'>
+  	<div class="col-md-4">
+  		<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  	{% for j in sex %}
+    <a class="dropdown-item sex" href="#" >{{j.sex}}</a>
+    {% endfor %}
+    
+  </div>
+</div>
+  		
+</div>
+
+<div class="col-md-4">
+<select name="race" id='race' class="form-control">
 	<option>Race</option>
 	{% for j in race %}
   <option value="{{ j.race }}">{{ j.race }}</option>
   {% endfor %}
   
 </select>
+</div>
 
+<div class="col-md-4">
 <select name="relationship" id="relationship">
 	<option>Relationship</option>
 	{% for j in relationship %}
@@ -36,6 +48,8 @@
   {% endfor %}
 
  </select>
+</div>
+</div>
 <!-- <form action="{" method="get">
     <label for="featured">Format</label>
     <select name="featured">
@@ -44,10 +58,13 @@
     <input type="submit" name="featured" value="Filter" />
 </form>  
  -->
-<table border="1" cellpadding="10" >
-          <thead >
-              <tr>
-              <th>Id</th>
+
+ <div class="row">
+<div class="table-responsive">
+ <table class="table">
+  <thead class="thead-dark">
+    <tr>
+        <th>Id</th>
               <th>Age</th>
               <th>Workclass</th>
               <th>fnlwgt</th>
@@ -62,6 +79,52 @@
               <th>Capital-loss</th>
               <th>hours_per_week</th>
               <th>native_country</th>
+    </tr>
+  </thead>
+  <tbody class="change">
+    <tr>
+      {% for i in sex_filter %}
+              <tr>
+              <td>{{ i.id }}</td>
+              <td>{{ i.age }}</td>
+              <td>{{ i.workclass }}</td>
+              <td>{{ i.fnlwgt }}</td>
+              <td>{{ i.education }}</td>
+              <td>{{ i.education_num }}</td>
+              <td>{{ i.martial_status }}</td>
+              <td>{{ i.occupation }}</td>
+              <td>{{ i.relationship }}</td>
+              <td>{{ i.race }}</td>
+              <td>{{ i.sex }}</td>
+              <td>{{ i.capital_gain }}</td>
+              <td>{{ i.capital_gain }}</td>
+              <td>{{ i.hours_per_week }}</td>
+              <td>{{ i.native_country }}</td>
+              {% endfor %}
+    </tr>
+</tr>
+  </tbody>
+</table>
+</div>
+</div>
+<table border="1" cellpadding="10" style="display: none;" >
+          <thead >
+              <tr>
+              <th>Id</th>
+              <th>Age</th>
+              <th>Workclass</th>
+              <th>fnlwgt</th>
+              <th>education</th>
+              <th>education_num</th>
+              <th>Martial_Status</th>
+              <th>Occupation</th>
+              <th>Relationship</th>
+              <th>Race</th>
+              <th>Sex</th>
+              <th>Capital_Gain</th>
+              <th>Capital_Loss</th>
+              <th>Hours_Per_Week</th>
+              <th>Native_Country</th>
 
               </tr>
           </thead>
