@@ -22,9 +22,9 @@
     
 
 <script type="text/javascript">
-	$('.sex').on('click', function(e){
+	$('.dropdown-item').on('click', function(e){
 		e.preventDefault();
-		var value=$('.sex').data()
+		var value=$(this).text()
 		alert (value);
 		var url=('/view?sex=+'+$.trim(value))
 		alert (url);

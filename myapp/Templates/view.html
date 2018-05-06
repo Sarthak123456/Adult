@@ -18,11 +18,11 @@
   	<div class="col-md-4">
   		<div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+    Choose Sex to filter
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <div class="dropdown-menu sex" aria-labelledby="dropdownMenuButton">
   	{% for j in sex %}
-    <a class="dropdown-item sex" href="#" >{{j.sex}}</a>
+    <a class="dropdown-item"  href="#">{{j.sex}}</a>
     {% endfor %}
     
   </div>
