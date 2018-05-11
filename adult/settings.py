@@ -26,7 +26,7 @@ with sqlite3.connect(db_path) as db:
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
-    ALLOWED_HOSTS = [ ]
+    ALLOWED_HOSTS = [u'604838072ae34fc8a132c985d4768253.vfs.cloud9.us-east-2.amazonaws.com']
 
 
     # Application definition

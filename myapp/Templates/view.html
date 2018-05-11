@@ -7,60 +7,43 @@
     <div class='col-md-6'>
  <div id="donutchart" style="width: 700px; height: 300px;"></div>
  </div>
- <div class='col-md-6 pull-right'>
+ <div class='col-md-6 float-right'>
      <div id="piechart" style="width: 700px; height: 300px;"></div>
      </div>
   
   </div>
-
-  <div class="row">
-
-  	<div class="col-md-4">
-  		<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Choose Sex to filter
-  </button>
-  <div class="dropdown-menu sex" aria-labelledby="dropdownMenuButton">
-  	{% for j in sex %}
-    <a class="dropdown-item"  href="#">{{j.sex}}</a>
-    {% endfor %}
-    
+   <form action='/view'  name='sex'>
+<div class='row'>
+    <div class='col-md-3'>
+  <select  name='sex' id='sex' class='form-control' >
+     <option> </option>
+     {% for j in sex %}
+      <option value='{{j.sex}}'>{{j.sex}}</option>
+       {% endfor %}
+  </select>
   </div>
-</div>
-  		
-</div>
-
-<div class="col-md-4">
-<select name="race" id='race' class="form-control">
-	<option>Race</option>
-	{% for j in race %}
-  <option value="{{ j.race }}">{{ j.race }}</option>
-  {% endfor %}
-  
-</select>
-</div>
-
-<div class="col-md-4">
-<select name="relationship" id="relationship">
-	<option>Relationship</option>
-	{% for j in relationship %}
-  <option value="{{ j.relationship }}">{{ j.relationship }}</option>
-  {% endfor %}
-
- </select>
-</div>
-</div>
-<!-- <form action="{" method="get">
-    <label for="featured">Format</label>
-    <select name="featured">
-        <option value="Yes" />Yes</option>
-        <option value="No" />No</option>
-    <input type="submit" name="featured" value="Filter" />
-</form>  
- -->
+  <div class='col-md-3'>
+    <select  name='race' id='race' class='form-control'>
+      <option> </option>
+     {% for j in race %}
+      <option value='{{j.race}}'>{{j.race}}</option>
+       {% endfor %}
+  </select>
+  </div>
+  <div class='col-md-3'>
+  <select  name='relationship' id='relationship' class='form-control'>
+      <option> </option>
+     {% for j in relationship %}
+      <option value='{{j.relationship}}'>{{j.relationship}}</option>
+       {% endfor %}
+  </select>
+ </div>
+      <div class='col-md-3'>  <input type="button" class='form-control' value="Reset"/></div>
+    </form>
+    </div>
 
  <div class="row">
-<div class="table-responsive">
+<div class="table-responsdive">
  <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -70,13 +53,13 @@
               <th>fnlwgt</th>
               <th>education</th>
               <th>education_num</th>
-              <th>Martial-status</th>
+              <th>Martial_status</th>
               <th>Occupation</th>
               <th>Relationship</th>
               <th>Race</th>
               <th>Sex</th>
-              <th>Capital-gain</th>
-              <th>Capital-loss</th>
+              <th>Capital_gain</th>
+              <th>Capital_loss</th>
               <th>hours_per_week</th>
               <th>native_country</th>
     </tr>
@@ -107,7 +90,7 @@
 </table>
 </div>
 </div>
-<table border="1" cellpadding="10" style="display: none;" >
+<table border="1" cellpadding="10" style='display:none'>
           <thead >
               <tr>
               <th>Id</th>
@@ -129,7 +112,7 @@
               </tr>
           </thead>
           <tbody class="table">
-              {% for i in sex_filter %}
+              {% for i in filter %}
               <tr>
               <td>{{ i.id }}</td>
               <td>{{ i.age }}</td>

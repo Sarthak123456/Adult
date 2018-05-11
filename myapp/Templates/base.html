@@ -19,22 +19,17 @@
     {% endblock %}
 
 </div>
-    
+   
 
 <script type="text/javascript">
-	$('.dropdown-item').on('click', function(e){
+	$('#sex').on('change', function(e){
 		e.preventDefault();
-		var value=$(this).text()
-		alert (value);
+		var value=$('#sex').val()
 		var url=('/view?sex=+'+$.trim(value))
-		alert (url);
-		console.log (url);
 		$.ajax({
 			type:'get',
 			url: url,
-
 			success : function(data){
-
 				 var jq=jQuery(data);
 		         var title = jq.find(".change");
 		        
@@ -43,10 +38,8 @@
 		         
 				
 			}
-
 		});
 	});
-
 	$('#race').on('change', function(e){
 		e.preventDefault();
 		var value=$('#race').val()
@@ -56,9 +49,7 @@
 		$.ajax({
 			type:'get',
 			url: url,
-
 			success : function(data){
-
 				 var jq=jQuery(data);
 		         var title = jq.find(".table");
 		         
@@ -67,10 +58,8 @@
 		         
 				
 			}
-
 		});
 	});
-
 	$('#relationship').on('change', function(e){
 		e.preventDefault();
 		var value=$('#relationship').val()
@@ -80,9 +69,7 @@
 		$.ajax({
 			type:'get',
 			url: url,
-
 			success : function(data){
-
 				 var jq=jQuery(data);
 		         var title = jq.find(".table");
 		        
@@ -90,11 +77,8 @@
 		         
 			
 			}
-
 		});
 	});
-
-
 </script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
