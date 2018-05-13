@@ -16,7 +16,7 @@
 <div class='row'>
     <div class='col-md-3'>
   <select  name='sex' id='sex' class='form-control' >
-     <option> </option>
+     <option hidden>Sex</option>
      {% for j in sex %}
       <option value='{{j.sex}}'>{{j.sex}}</option>
        {% endfor %}
@@ -24,7 +24,7 @@
   </div>
   <div class='col-md-3'>
     <select  name='race' id='race' class='form-control'>
-      <option> </option>
+      <option hidden>Race</option>
      {% for j in race %}
       <option value='{{j.race}}'>{{j.race}}</option>
        {% endfor %}
@@ -32,13 +32,13 @@
   </div>
   <div class='col-md-3'>
   <select  name='relationship' id='relationship' class='form-control'>
-      <option> </option>
+      <option hidden>Relationship</option>
      {% for j in relationship %}
       <option value='{{j.relationship}}'>{{j.relationship}}</option>
        {% endfor %}
   </select>
  </div>
-      <div class='col-md-3'>  <input type="button" class='form-control' value="Reset"/></div>
+      <div class='col-md-3'>  <input id='reload' type="submit" class='form-control' value="Reset"/></div>
     </form>
     </div>
 
@@ -65,7 +65,9 @@
     </tr>
   </thead>
   <tbody class="change">
+     
     <tr>
+         {% if sex_filter %}
       {% for i in sex_filter %}
               <tr>
               <td>{{ i.id }}</td>
@@ -84,8 +86,15 @@
               <td>{{ i.hours_per_week }}</td>
               <td>{{ i.native_country }}</td>
               {% endfor %}
+              {% else %}
+              <tr><td><h1>No data to display</h1></td></tr>
+
+{% endif %}
     </tr>
+    
 </tr>
+
+
   </tbody>
 </table>
 </div>

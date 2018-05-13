@@ -22,10 +22,31 @@
    
 
 <script type="text/javascript">
-	$('#sex').on('change', function(e){
+$('#sex' ).on('change', function(e){
 		e.preventDefault();
-		var value=$('#sex').val()
-		var url=('/view?sex=+'+$.trim(value))
+		var sex=$('#sex').val()
+		var race=$('#race').val()
+		var relationship=$('#relationship').val()
+		 if (race=='Race' && relationship=='Relationship') {
+		     var url=('/view?sex=+'+$.trim(sex))
+		}
+		
+		else if(race=='Race') {
+			console.log (sex + race + relationship );
+		     var url=('/view?sex=+'+$.trim(sex)+'&race='+'&relationship=+'+$.trim(relationship))
+		}
+		
+		
+		
+		else if(relationship=='Relationship') {
+			console.log (sex + race + relationship);
+		    var url=('/view?sex=+'+$.trim(sex)+'&race=+'+$.trim(race)+'&relationship=')
+		}
+		else {
+		console.log (sex + race + relationship);
+	    var url=('/view?sex=+'+$.trim(sex)+'&race=+'+$.trim(race)+'&relationship=+'+$.trim(relationship))
+		}
+		
 		$.ajax({
 			type:'get',
 			url: url,
@@ -35,50 +56,90 @@
 		        
 		         // var description = jq.find(".modal-body");
 		         $(document).find('.change').replaceWith(title);
-		         
-				
-			}
+		  }
 		});
 	});
-	$('#race').on('change', function(e){
-		e.preventDefault();
-		var value=$('#race').val()
 	
-		var url=('/view?race=+'+$.trim(value))
+	
+	$('#race' ).on('change', function(e){
+		e.preventDefault();
+		var sex=$('#sex').val()
+		var race=$('#race').val()
+		var relationship=$('#relationship').val()
+		 if ((sex=='Sex') && (relationship=='Relationship')) {
+		     var url=('/view?sex='+'&race=+'+$.trim(race)+'&relationship=')
+		     console.log (url);
+		}
+		
+		else if(sex=='Sex') {
+		     var url=('/view?sex='+'&race=+'+$.trim(race)+'&relationship=+'+$.trim(relationship))
+		     console.log (url);
+		}
+		else if(relationship=='Relationship') {
+		    var url=('/view?sex=+'+$.trim(sex)+'&race=+'+$.trim(race)+'&relationship=')
+		    console.log (url);
+		}
+		
+		else {
+		console.log (sex + race );
+	    var url=('/view?sex=+'+$.trim(sex)+'&race=+'+$.trim(race)+'&relationship=+'+$.trim(relationship))
+	    console.log (url);
+		}
 		console.log (url);
 		$.ajax({
 			type:'get',
 			url: url,
 			success : function(data){
 				 var jq=jQuery(data);
-		         var title = jq.find(".table");
-		         
+		         var title = jq.find(".change");
+		        
 		         // var description = jq.find(".modal-body");
-		         $(document).find('.table').replaceWith(title);
-		         
-				
-			}
+		         $(document).find('.change').replaceWith(title);
+		  }
 		});
 	});
-	$('#relationship').on('change', function(e){
-		e.preventDefault();
-		var value=$('#relationship').val()
-		
-		var url=('/view?relationship=+'+$.trim(value))
 	
+	
+	$('#relationship' ).on('change', function(e){
+		e.preventDefault();
+		var sex=$('#sex').val()
+		var race=$('#race').val()
+		var relationship=$('#relationship').val()
+		 if(sex=='Sex' && race=='Race') {
+		     var url=('/view?sex='+'&race='+'&relationship=+'+$.trim(relationship))
+		}
+			else if(race=='Race') {
+		     var url=('/view?sex=+'+$.trim(sex)+'&race='+'&relationship=+'+$.trim(relationship))
+		}
+		
+		else if(sex=='Sex') {
+		     var url=('/view?sex='+'&race='+$.trim(race)+'&relationship=+'+$.trim(relationship))
+		}
+		
+		else {
+		console.log (sex + race );
+	    var url=('/view?sex=+'+$.trim(sex)+'&race=+'+$.trim(race)+'&relationship=+'+$.trim(relationship))
+		}
+		console.log (url);
 		$.ajax({
 			type:'get',
 			url: url,
 			success : function(data){
 				 var jq=jQuery(data);
-		         var title = jq.find(".table");
+		         var title = jq.find(".change");
 		        
-		         $(document).find('.table').replaceWith(title);
-		         
-			
-			}
+		         // var description = jq.find(".modal-body");
+		         $(document).find('.change').replaceWith(title);
+		  }
 		});
 	});
+	
+	$('#reload').click(function(e){
+		e.preventDefault();
+		window.location.reload();
+	});
+	
+	
 </script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 

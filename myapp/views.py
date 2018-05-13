@@ -30,7 +30,7 @@ def view(request):
     	elif (request.GET.get('sex') and request.GET.get('race')):
     		if sex_filter == 'Sex':
     			sex_filter= ' '
-    		filter=Adult.objects.select_related().filter(Q(sex= sex_filter) & Q(race = race_filter))
+    		filter=Adult.objects.select_related().filter(Q(sex= sex_filter) & Q(race = race_filter))[:20]
     		
     	elif (request.GET.get('race') and request.GET.get('relationship')):
     		filter=Adult.objects.select_related().filter(Q(race = race_filter) & Q(relationship = relationship_filter))
