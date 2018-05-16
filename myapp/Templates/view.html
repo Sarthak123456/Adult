@@ -38,15 +38,16 @@
        {% endfor %}
   </select>
  </div>
-      <div class='col-md-3'>  <input id='reload' type="submit" class='form-control' value="Reset"/></div>
+      <div class='col-md-3'>  <input id='reload' type="reset" class='form-control' value="Reset"/></div>
     </form>
     </div>
 
  <div class="row">
-<div class="table-responsdive">
+<div class="table-responsive">
  <table class="table">
   <thead class="thead-dark">
     <tr>
+        <div id="loading">LOADING...</div>
         <th>Id</th>
               <th>Age</th>
               <th>Workclass</th>
@@ -66,9 +67,8 @@
   </thead>
   <tbody class="change">
      
-    <tr>
-         {% if sex_filter %}
-      {% for i in sex_filter %}
+         {% if filter %}
+      {% for i in filter %}
               <tr>
               <td>{{ i.id }}</td>
               <td>{{ i.age }}</td>
@@ -92,9 +92,6 @@
 {% endif %}
     </tr>
     
-</tr>
-
-
   </tbody>
 </table>
 </div>

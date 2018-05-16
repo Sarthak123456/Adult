@@ -25,33 +25,33 @@ def view(request):
 	race_filter=request.GET.get('race')
 	relationship_filter= request.GET.get('relationship')
 	if (request.GET.get('sex') and request.GET.get('race') and request.GET.get('relationship')):
-		    	filter=Adult.objects.select_related().filter(Q(sex= sex_filter) & Q(race = race_filter) & Q(relationship = relationship_filter))[:20]
+		    	filter=Adult.objects.select_related().filter(Q(sex= sex_filter) & Q(race = race_filter) & Q(relationship = relationship_filter)) 
 		    	
     	elif (request.GET.get('sex') and request.GET.get('race')):
-    		if sex_filter == 'Sex':
-    			sex_filter= ' '
-    		filter=Adult.objects.select_related().filter(Q(sex= sex_filter) & Q(race = race_filter))[:20]
+    		   		filter=Adult.objects.select_related().filter(Q(sex= sex_filter) & Q(race = race_filter)) 
+    		   		
+    	elif (request.GET.get('sex') and request.GET.get('relationship')):
+    		   		filter=Adult.objects.select_related().filter(Q(sex= sex_filter) & Q(relationship = relationship_filter)) 
     		
     	elif (request.GET.get('race') and request.GET.get('relationship')):
     		filter=Adult.objects.select_related().filter(Q(race = race_filter) & Q(relationship = relationship_filter))
     	
     	elif request.GET.get('sex'):
 	    	sex_filter= request.GET.get('sex')
-	   	filter=Adult.objects.select_related().filter(sex=sex_filter)[:20]       	
+	   	filter=Adult.objects.select_related().filter(sex=sex_filter)        	
            		
 	elif request.GET.get('race'):
 	    	race_filter= request.GET.get('race')
-	   	filter=Adult.objects.filter(race=race_filter)[:20]
+	   	filter=Adult.objects.filter(race=race_filter) 
 	   		
 	elif request.GET.get('relationship'):
 	    	relationship_filter= request.GET.get('relationship')
-	   	filter=Adult.objects.select_related().filter(relationship=relationship_filter)[:20]
+	   	filter=Adult.objects.select_related().filter(relationship=relationship_filter)
 	   	
 	else:
-			filter=Adult.objects.select_related().all()[:10]
+			filter=Adult.objects.select_related().all()
 
-
-	context={'sex_filter': filter,'sex': sex ,'race': race, 'relationship' : relationship, 'male': males, 'female' : females, 
+	context={'filter': filter,'sex': sex ,'race': race, 'relationship' : relationship, 'male': males, 'female' : females, 
 	'white': white, 'black' : black, 'asian': asian, 'nri': nri , 'other': other}
 	return render(request, 'view.html', context)
     
@@ -71,10 +71,10 @@ def sex_filter(request):
 	if request.GET.get('sex'):
 		import pdb; pdb.set_trace()
 		sex_filter= request.GET.get('sex')
-		filter=Adult.objects.filter(sex=sex_filter)[:20]
+		filter=Adult.objects.filter(sex=sex_filter) 
 
 	else:
-		filter=Adult.objects.all()[:20]
+		filter=Adult.objects.all() 
 
 	context={'sex_filter' : filter}
 	return render(request, 'view.html', context)
